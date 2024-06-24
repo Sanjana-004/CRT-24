@@ -1,0 +1,92 @@
+Write a program to check whether the given number is an Armstrong number or not.
+Armstrong Number:abcd... = pow(a,n) + pow(b,n) + pow(c,n) + pow(d,n) + .... where n represents the number of digits
+
+Input Format
+Read a no
+
+Constraints
+1<=n<=10^7
+
+Output Format
+Print "Yes" if armstrong no else print "No"
+
+Sample Input 0
+153
+
+Sample Output 0
+Yes
+
+Sample Input 1
+120
+
+Sample Output 1
+No
+
+Sample Input 2
+1253
+
+Sample Output 2
+No
+
+Sample Input 3
+1634
+
+Sample Output 3
+Yes
+************************************************************************************************************************************
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int digit(int d) {
+    int c;
+    c=0;
+    while(d!=0) {
+        d=d/10;
+        c++;
+    }
+  return c;  
+}
+void arm(int n) {
+    int r,dig,a=0,t,b=0;
+    t=n;
+    dig=digit(n);
+    while(n>0) {
+    r=n%10;
+    a=pow(r,dig);
+        b=b+a;
+    n=n/10;
+    } 
+    if (b==t) {
+        printf("Yes");
+    }
+    else {
+        printf("No");
+    }
+} 
+int main() {
+int n;
+    scanf("%d",&n);
+    arm(n);
+    return 0;
+}
+********************************************************************************************************************************
+int num, i, sum = 0, d = 0, temp;
+scanf("%d", &num);
+i = num;
+temp = num;
+while(temp > 0) {
+    temp /= 10;
+    d++;
+}
+temp = num;
+while(temp > 0) {
+    int digit = temp % 10;
+    sum += pow(digit, d);
+    temp /= 10;
+}
+if(sum == i) {
+    printf("Yes\n");
+} else {
+    printf("No\n");
+}
